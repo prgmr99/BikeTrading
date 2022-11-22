@@ -3,35 +3,6 @@
 * Copyright 2013-2022 Start Bootstrap
 * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-shop-homepage/blob/master/LICENSE)
 */
-let bikeBox = document.querySelector("#bikeBox");
-let i = 0;
-let template = 
-    `<div class="col mb-5">
-        <div class="card h-100">
-        <!-- Product image-->
-        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-        <!-- Product details-->
-        <div class="card-body p-4">
-            <div class="text-center">
-                <!-- Product name-->
-                <h5 class="fw-bolder">Bike 1</h5>
-                <!-- Product price-->
-                $40.00 - $80.00
-            </div>
-        </div>
-        <!-- Product actions-->
-        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-            <div class="text-center" id="bike${i}">
-                <a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
-            </div>
-        </div>
-    </div>
-    </div>`;
-// template 추가.
-function add_box() {
-    bikeBox.insertAdjacentHTML('beforeend', template);
-    i++;
-}
 
 // 나중에 메인화면에 리스트 추가하는 코드.
 //uploadBtn.addEventListener("click", add_box);
@@ -108,7 +79,43 @@ document.getElementById('popup_open_btn').addEventListener('click', function() {
     modal('my_modal');
 });
 
+let bikeOwner = document.querySelector("#ownerName").value;
+let bikeModel = document.querySelector("#bikeModel").value;
+let bikePrice = document.querySelector("#bikePrice").value;
+let bikeBox = document.querySelector("#bikeBox");
+let i = 0;
+let template = 
+    `<div class="col mb-5">
+        <div class="card h-100">
+        <!-- Product image-->
+        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+        <!-- Product details-->
+        <div class="card-body p-4">
+            <div class="text-center">
+                <!-- Product name-->
+                <h5 class="fw-bolder">${bikeModel}</h5>
+                <!-- Product price-->
+                $${bikePrice}
+                <br>
+                <h7 class="fw-bolder">${bikeOwner}</h7>
+            </div>
+        </div>
+        <!-- Product actions-->
+        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+            <div class="text-center" id="bike${i}">
+                <a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
+            </div>
+        </div>
+    </div>
+    </div>`;
+// template 추가.
+function add_box(ownerName, bikeModel, price) {
+    bikeBox.insertAdjacentHTML('beforeend', template);
+    i++;
+}
 document.querySelector("#submitForm").addEventListener('click', () => {
+    add_box(bikeOwner, bikeModel, bikePrice);
+    console.log(bikeOwner);
     alert("Upload Success!");
 })
 
