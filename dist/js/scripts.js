@@ -114,8 +114,9 @@ function add_box(ownerName, bikeModel, price) {
     i++;
 }
 document.querySelector("#submitForm").addEventListener('click', () => {
-    add_box(bikeOwner, bikeModel, bikePrice);
-    console.log(bikeOwner);
+    let bikeOwners = document.querySelector("#ownerName").value;
+    add_box(bikeOwners, bikeModel, bikePrice);
+    console.log(bikeOwners);
     alert("Upload Success!");
 })
 
