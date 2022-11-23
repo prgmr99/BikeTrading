@@ -20,9 +20,30 @@ function modalClose() {
     document.querySelector('.modal_background').style.display = 'none';
 }
 
-//버튼 클릭리스너 달기
+function modalPayClose() {
+    document.querySelector('.modalPay_wrap').style.display = 'none';
+    document.querySelector('.modalPay_background').style.display = 'none';
+}
+// 버튼 클릭리스너 달기
 document.querySelector('#modal_btn').addEventListener('click', modalOpen);
 document.querySelector('.modal_close').addEventListener('click', modalClose);
+
+//document.querySelector('#pay_btn').addEventListener('click', modalPayClose);
+// 모달창의 결제버튼 클릭시
+// 환불 버튼과 구매확정 버튼
+const refundBtn = document.querySelector("#refundBtn");
+const confirm_pur = document.querySelector("#purchase_confirm");
+
+const target = document.querySelector("#pay_btn");
+target.addEventListener('click', () => {
+    setTimeout(function() {
+        refundBtn.disabled = false;
+        confirm_pur.disabled = false;
+    }, 5000)
+    //refundBtn.disabled = false;
+    //confirm_pur.disabled = false;
+    //modalPayClose();
+})
 
 // Upload Modal
 function modal(id) {
@@ -79,28 +100,30 @@ document.getElementById('popup_open_btn').addEventListener('click', function() {
     modal('my_modal');
 });
 
-let bikeOwner = document.querySelector("#ownerName").value;
-let bikeModel = document.querySelector("#bikeModel").value;
-let bikePrice = document.querySelector("#bikePrice").value;
 let bikeBox = document.querySelector("#bikeBox");
 let i = 0;
-let template = 
+// template 추가.
+document.querySelector("#submitForm").addEventListener('click', () => {
+    let bikeOwner = document.querySelector("#ownerName").value;
+    let bikeModel = document.querySelector("#bikeModel").value;
+    let bikePrice = document.querySelector("#bikePrice").value;
+    let selectImg = document.querySelector("#profile").files[0];
+    console.log(selectImg);
+    const imgFile = URL.createObjectURL(selectImg);
+    //document.querySelector(".uploadImg").src = imgFile;
+    console.log(imgFile);
+    let template = 
     `<div class="col mb-5">
         <div class="card h-100">
-        <!-- Product image-->
-        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-        <!-- Product details-->
+        <img class="card-img-top" src="${imgFile}" alt="..." />
         <div class="card-body p-4">
             <div class="text-center">
-                <!-- Product name-->
                 <h5 class="fw-bolder">${bikeModel}</h5>
-                <!-- Product price-->
                 $${bikePrice}
                 <br>
                 <h7 class="fw-bolder">${bikeOwner}</h7>
             </div>
         </div>
-        <!-- Product actions-->
         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
             <div class="text-center" id="bike${i}">
                 <a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
@@ -108,15 +131,16 @@ let template =
         </div>
     </div>
     </div>`;
-// template 추가.
-function add_box(ownerName, bikeModel, price) {
-    bikeBox.insertAdjacentHTML('beforeend', template);
-    i++;
-}
-document.querySelector("#submitForm").addEventListener('click', () => {
-    let bikeOwners = document.querySelector("#ownerName").value;
-    add_box(bikeOwners, bikeModel, bikePrice);
-    console.log(bikeOwners);
+    function add_box(ownerName, bikeModel, price) {
+        bikeBox.insertAdjacentHTML('beforeend', template);
+        i++;
+    }
+
+    add_box(bikeOwner, bikeModel, bikePrice);
+    console.log(bikeOwner);
+    console.log(bikeModel);
+    console.log(bikePrice);
     alert("Upload Success!");
 })
+
 
