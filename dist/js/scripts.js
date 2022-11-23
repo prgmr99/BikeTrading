@@ -27,6 +27,20 @@ function modalPayClose() {
 // 버튼 클릭리스너 달기
 document.querySelector('#modal_btn').addEventListener('click', modalOpen);
 document.querySelector('.modal_close').addEventListener('click', modalClose);
+/*const modalButtons = document.querySelectorAll('#modal_btn');
+let modalBtnsLen = modalButtons.length;
+for(let i=0;i<modalBtnsLen;i++) {
+    modalButtons[i].addEventListener('click', () => {
+        modalOpen();
+    });
+}
+const modalCloseBtns = document.querySelectorAll('.modal_close');
+let modalCloseLen = modalCloseBtns.length;
+for(let j=0;j<modalCloseBtns;j++) {
+    modalCloseBtns[i].addEventListener('click', () => {
+        modalClose();
+    });
+}*/
 
 //document.querySelector('#pay_btn').addEventListener('click', modalPayClose);
 // 모달창의 결제버튼 클릭시
@@ -42,7 +56,7 @@ target.addEventListener('click', () => {
     }, 5000)
     //refundBtn.disabled = false;
     //confirm_pur.disabled = false;
-    //modalPayClose();
+    //modalPayClose(); -> doesn't work.
 })
 
 // Upload Modal
@@ -108,12 +122,9 @@ document.querySelector("#submitForm").addEventListener('click', () => {
     let bikeModel = document.querySelector("#bikeModel").value;
     let bikePrice = document.querySelector("#bikePrice").value;
     let selectImg = document.querySelector("#profile").files[0];
-    console.log(selectImg);
     const imgFile = URL.createObjectURL(selectImg);
-    //document.querySelector(".uploadImg").src = imgFile;
-    console.log(imgFile);
     let template = 
-    `<div class="col mb-5">
+    /**`<div class="col mb-5">
         <div class="card h-100">
         <img class="card-img-top" src="${imgFile}" alt="..." />
         <div class="card-body p-4">
@@ -130,7 +141,45 @@ document.querySelector("#submitForm").addEventListener('click', () => {
             </div>
         </div>
     </div>
-    </div>`;
+    </div>`;*/
+    `<div class="col mb-5">
+        <div class="card h-100">
+            <!-- Product image-->
+            <img class="card-img-top" src="${imgFile}" width="400" height="180"/>
+            <!-- Product details-->
+            <div class="card-body p-4">
+                <div class="text-center">
+                    <!-- Product name-->
+                    <h5 class="fw-bolder">${bikeModel}</h5>
+                    <!-- Product price-->
+                    $40.00 - $80.
+                    <br>
+                    <h7 class="fw-bolder">${bikeOwner}</h7>
+                </div>
+            </div>
+            <!-- Product actions-->
+            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                <div class="text-center" id="bike${i}">
+                    <!--<a class="btn btn-outline-dark mt-auto" href="#">Buy</a>-->
+                    <button type="button" id="modal_btn">Buy</button>
+                    <div class="modal_background"></div>
+                    <div class="modal_wrap">
+                        <div class="modal_close">X</div>
+                        <div class="text">
+                            <h2>${bikeModel}</h2>
+                            <img src="${imgFile}" width="400" height="250">
+                            <br>
+                            ${bikePrice}<br>
+                            <h7 class="fw-bolder">${bikeOwner}</h7>
+                            <button type="button" class="modalPay_close" id="pay_btn">Buy</button>
+                        </div>
+                    </div>
+                    <button type="button" id="refundBtn" disabled>Refund</button>
+                    <button type="button" id="purchase_confirm" disabled>Confirmed</button>
+                </div>
+            </div>
+        </div>
+    </div>`
     function add_box(ownerName, bikeModel, price) {
         bikeBox.insertAdjacentHTML('beforeend', template);
         i++;
