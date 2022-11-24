@@ -10,14 +10,23 @@
 // Upload할 때, 모달창
 
 // Buy할 때, 모달창
-function modalOpen() {
-    document.querySelector('.modal_wrap').style.display = 'block';
-    document.querySelector('.modal_background').style.display = 'block';
+function modalOpen(i) {
+    let mw = document.querySelectorAll('.modal_wrap');
+    let mb = document.querySelectorAll('.modal_background');
+    mwLen = mw.length;
+    mbLen = mb.length;
+    mw[i].style.display = 'block';
+    mb[i].style.display = 'block';
+    
 }
 // 모달 끄기
-function modalClose() {
-    document.querySelector('.modal_wrap').style.display = 'none';
-    document.querySelector('.modal_background').style.display = 'none';
+function modalClose(i) {
+    let mw = document.querySelectorAll('.modal_wrap');
+    let mb = document.querySelectorAll('.modal_background');
+    mwLen = mw.length;
+    mbLen = mb.length;
+    mw[i].style.display = 'none';
+    mb[i].style.display = 'none';
 }
 
 function modalPayClose() {
@@ -25,22 +34,56 @@ function modalPayClose() {
     document.querySelector('.modalPay_background').style.display = 'none';
 }
 // 버튼 클릭리스너 달기
-document.querySelector('#modal_btn').addEventListener('click', modalOpen);
-document.querySelector('.modal_close').addEventListener('click', modalClose);
-/*const modalButtons = document.querySelectorAll('#modal_btn');
-let modalBtnsLen = modalButtons.length;
-for(let i=0;i<modalBtnsLen;i++) {
+//document.querySelector('#modal_btn').addEventListener('click', modalOpen);
+//document.querySelector('.modal_close').addEventListener('click', modalClose);
+//const modalButtons = document.querySelectorAll('#modal_btn');
+//let modalBtnsLen = modalButtons.length;
+/*for(let i=0;i<modalBtnsLen;i++) {
     modalButtons[i].addEventListener('click', () => {
         modalOpen();
     });
-}
-const modalCloseBtns = document.querySelectorAll('.modal_close');
-let modalCloseLen = modalCloseBtns.length;
-for(let j=0;j<modalCloseBtns;j++) {
+}*/
+//const modalCloseBtns = document.querySelectorAll('.modal_close');
+//let modalCloseLen = modalCloseBtns.length;
+/*for(let j=0;j<modalCloseBtns;j++) {
     modalCloseBtns[i].addEventListener('click', () => {
         modalClose();
     });
 }*/
+
+// 각각의 모달창 열기.
+const test1 = document.querySelector('.bikeOpen1');
+test1.addEventListener('click', () => {
+    modalOpen(0);
+})
+const test2 = document.querySelector('#bikeClose1');
+test2.addEventListener('click', () => {
+    modalClose(0);
+})
+const test3 = document.querySelector('.bikeOpen2');
+test3.addEventListener('click', () => {
+    modalOpen(1);
+})
+const test4 = document.querySelector('#bikeClose2');
+test4.addEventListener('click', () => {
+    modalClose(1);
+})
+const test5 = document.querySelector('.bikeOpen3');
+test5.addEventListener('click', () => {
+    modalOpen(2);
+})
+const test6 = document.querySelector('#bikeClose3');
+test6.addEventListener('click', () => {
+    modalClose(2);
+})
+const test7 = document.querySelector('.bikeOpen4');
+test7.addEventListener('click', () => {
+    modalOpen(3);
+})
+const test8 = document.querySelector('#bikeClose4');
+test8.addEventListener('click', () => {
+    modalClose(3);
+})
 
 //document.querySelector('#pay_btn').addEventListener('click', modalPayClose);
 // 모달창의 결제버튼 클릭시
@@ -49,15 +92,41 @@ const refundBtn = document.querySelector("#refundBtn");
 const confirm_pur = document.querySelector("#purchase_confirm");
 
 const target = document.querySelector("#pay_btn");
+const target1 = document.querySelector("#modal_btn");
 target.addEventListener('click', () => {
     setTimeout(function() {
         refundBtn.disabled = false;
-        confirm_pur.disabled = false;
+        confirm_pur.disabled = false;  
     }, 5000)
-    //refundBtn.disabled = false;
-    //confirm_pur.disabled = false;
-    //modalPayClose(); -> doesn't work.
+    target1.disabled = true;
 })
+
+// json 파일 불러오기 1
+// const jsonData = require('./XXX.json');
+// console.log(jsonData);  불러온 것 확인.
+
+// json 파일 불러오기 2
+/*fetch("./XXX.json").then(response => {
+    return response.json();
+})
+.then(jsondata => console.log(jsondata));*/
+
+// json 파일 불러오기 3
+// <script src="../json/myJson.json" type="text/javascript"></script>
+// json 파일이 객체 형태로 표현된 경우
+//let mydata = JSON.parse(JSON.stringify(data));
+//console.log(mydata); 이렇게 파싱.
+// json 파일 파싱 후 데이터 불러오기. 
+
+// let datas = [ ... ];
+
+/*if(datas.length != 0) {
+    location.reload(true);
+}*/
+// reload 함수
+/*function reLoad() {
+    location.reload(true); // 브라우저가 가지고 있는 기존의 리소스는 신경쓰지 않고 새로운 리소스를 받아 화면을 갱신합니다.
+}*/
 
 // Upload Modal
 function modal(id) {
@@ -80,9 +149,18 @@ function modal(id) {
     document.body.append(bg);
 
     // 닫기 버튼 처리, 시꺼먼 레이어와 모달 div 지우기
+    // 여기서 json 파일에서 읽어온 값. 새로고침 및 체인과 소통.
     modal.querySelector('.modal_close_btn').addEventListener('click', function() {
         bg.remove();
         modal.style.display = 'none';
+        let bikeYear = document.querySelector("#bikeYear").value;
+        let bikeModel = document.querySelector("#bikeModel").value;
+        let bikePrice = document.querySelector("#bikePrice").value;
+        let selectImg = document.querySelector("#profile").files[0];
+        const imgFile = URL.createObjectURL(selectImg);
+        //datas.push({"Year":"${bikeYear}", "Model":"${bikeModel}", "Price":${bikePrice}, "Image":"${imgFile}");
+        //JSON.stringfy(datas);
+        location.reload(true);
     });
     modal.querySelector('#submitForm').addEventListener('click', function() {
         bg.remove();
@@ -116,32 +194,15 @@ document.getElementById('popup_open_btn').addEventListener('click', function() {
 
 let bikeBox = document.querySelector("#bikeBox");
 let i = 0;
+
 // template 추가.
 document.querySelector("#submitForm").addEventListener('click', () => {
-    let bikeOwner = document.querySelector("#ownerName").value;
+    let bikeYear = document.querySelector("#bikeYear").value;
     let bikeModel = document.querySelector("#bikeModel").value;
     let bikePrice = document.querySelector("#bikePrice").value;
     let selectImg = document.querySelector("#profile").files[0];
     const imgFile = URL.createObjectURL(selectImg);
     let template = 
-    /**`<div class="col mb-5">
-        <div class="card h-100">
-        <img class="card-img-top" src="${imgFile}" alt="..." />
-        <div class="card-body p-4">
-            <div class="text-center">
-                <h5 class="fw-bolder">${bikeModel}</h5>
-                $${bikePrice}
-                <br>
-                <h7 class="fw-bolder">${bikeOwner}</h7>
-            </div>
-        </div>
-        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-            <div class="text-center" id="bike${i}">
-                <a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
-            </div>
-        </div>
-    </div>
-    </div>`;*/
     `<div class="col mb-5">
         <div class="card h-100">
             <!-- Product image-->
@@ -154,7 +215,7 @@ document.querySelector("#submitForm").addEventListener('click', () => {
                     <!-- Product price-->
                     $40.00 - $80.
                     <br>
-                    <h7 class="fw-bolder">${bikeOwner}</h7>
+                    <h7 class="fw-bolder">${bikeYear}</h7>
                 </div>
             </div>
             <!-- Product actions-->
@@ -170,7 +231,7 @@ document.querySelector("#submitForm").addEventListener('click', () => {
                             <img src="${imgFile}" width="400" height="250">
                             <br>
                             ${bikePrice}<br>
-                            <h7 class="fw-bolder">${bikeOwner}</h7>
+                            <h7 class="fw-bolder">${bikeYear}</h7>
                             <button type="button" class="modalPay_close" id="pay_btn">Buy</button>
                         </div>
                     </div>
@@ -185,11 +246,9 @@ document.querySelector("#submitForm").addEventListener('click', () => {
         i++;
     }
 
-    add_box(bikeOwner, bikeModel, bikePrice);
-    console.log(bikeOwner);
+    add_box(bikeYear, bikeModel, bikePrice);
+    console.log(bikeYear);
     console.log(bikeModel);
     console.log(bikePrice);
     alert("Upload Success!");
 })
-
-

@@ -48,7 +48,7 @@
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
                     <h1 class="display-4 fw-bolder">Trade a bike with Etherium</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">Explanation</p>
+                    <p class="lead fw-normal text-white-50 mb-0">You just need an ether.</p>
                 </div>
             </div>
         </header>
@@ -57,7 +57,7 @@
             <div class="upload" id="box">
                 <div id="my_modal">
                     <form>
-                        Owner: <input type="text" id="ownerName"><br>
+                        Year: <input type="text" id="bikeYear"><br>
                         Model: <input type="text" id="bikeModel"><br>
                         Price: <input type="text" id="bikePrice"><br>
                     </form>
@@ -83,28 +83,28 @@
                                     <!-- Product name-->
                                     <h5 class="fw-bolder">Bike 1</h5>
                                     <!-- Product price-->
-                                    $40.00 - $80.
-                                    <br>
-                                    <h7 class="fw-bolder">owner</h7>
+                                    <h6 class="fw-bolder">40 ETH</h6>
+                                    <h7>1987.02.11</h7>
                                 </div>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center" id="bike1">
-                                    <!--<a class="btn btn-outline-dark mt-auto" href="#">Buy</a>-->
-                                    <button type="button" id="modal_btn">Buy</button>
+                                    <button type="button" id="modal_btn" class="bikeOpen1">BUY & MINT NFT</button>
                                     <div class="modal_background"></div>
                                     <div class="modal_wrap">
-                                        <div class="modal_close">X</div>
+                                        <div class="modal_close" id="bikeClose1">X</div>
                                         <div class="text">
                                             <h2>Bike 1</h2>
                                             <img src="https://ipfs.io/ipfs/QmWn5ZAEM73FP6XRn9QrqCBMbkS7WVbUCxkyFfgJT2fVdd?filename=bike1.png" width="400" height="250">
                                             <br>
-                                            $40.00<br>
-                                            <h7 class="fw-bolder">owner</h7>
+                                            <h7 class="fw-bolder">40 ETH</h7><br>
+                                            <h7 class="fw-bolder">010-1234-5678</h7><br>
+                                            <h7>1987.02.11</h7>
                                             <button type="button" class="modalPay_close" id="pay_btn">Buy</button>
                                         </div>
                                     </div>
+                                    <br>
                                     <button type="button" id="refundBtn" disabled>Refund</button>
                                     <button type="button" id="purchase_confirm" disabled>Confirmed</button>
                                 </div>
@@ -118,32 +118,27 @@
                             <div class="card-body p-4">
                                 <div class="text-center"> 
                                     <h5 class="fw-bolder">Bike 2</h5>
-                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                    </div>
-                                    <span class="text-muted text-decoration-line-through">$20.00</span>
-                                    $18.00
+                                    <span class="text-muted text-decoration-line-through">20 ETH</span>
+                                    <h6 class="fw-bolder">18 ETH</h6>
+                                    <h7>1987.02.11</h7>
                                 </div>
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center" id="bike2">
-                                    <button type="button" id="modal_btn">Buy</button>
+                                    <button type="button" id="modal_btn" class="bikeOpen2">BUY & MINT NFT</button>
                                     <div class="modal_background"></div>
                                     <div class="modal_wrap">
-                                        <div class="modal_close">X</div>
+                                        <div class="modal_close" id="bikeClose2">X</div>
                                         <div class="text">
                                             <h2>Bike 2</h2>
                                             <img src="https://ipfs.io/ipfs/QmbfhhVVWrZUcMA4X2pZAoxkRUdWikAu8U54hyXphRZ32a?filename=bike3.png" width="400" height="250">
                                             <br>
-                                            $10.00<br>
+                                            10.00 ETH<br>
                                             <h7 class="fw-bolder">Sunny</h7>
                                             <button type="button" class="modalPay_close" id="pay_btn">Buy</button>
                                         </div>
                                     </div>
+                                    <br>
                                     <button type="button" id="refundBtn" disabled>Refund</button>
                                     <button type="button" id="purchase_confirm" disabled>Confirmed</button>
                                 </div>
@@ -157,16 +152,17 @@
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <h5 class="fw-bolder">Bike 3</h5>
-                                    <span class="text-muted text-decoration-line-through">$50.00</span>
-                                    $25.00
+                                    <span class="text-muted text-decoration-line-through">50 ETH</span>
+                                    <h6 class="fw-bolder">30 ETH</h6>
+                                    <h7>1987.02.11</h7>
                                 </div>
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center" id="bike3">
-                                    <button type="button" id="modal_btn">Buy</button>
+                                    <button type="button" id="modal_btn" class="bikeOpen3">BUY & MINT NFT</button>
                                     <div class="modal_background"></div>
                                     <div class="modal_wrap">
-                                        <div class="modal_close">X</div>
+                                        <div class="modal_close" id="bikeClose3">X</div>
                                         <div class="text">
                                             <h2>Bike 3</h2>
                                             <img src="https://ipfs.io/ipfs/QmWn5ZAEM73FP6XRn9QrqCBMbkS7WVbUCxkyFfgJT2fVdd?filename=bike1.png" width="400" height="250">
@@ -176,6 +172,7 @@
                                             <button type="button" class="modalPay_close" id="pay_btn">Buy</button>
                                         </div>
                                     </div>
+                                    <br>
                                     <button type="button" id="refundBtn" disabled>Refund</button>
                                     <button type="button" id="purchase_confirm" disabled>Confirmed</button>
                                 </div>
@@ -188,23 +185,17 @@
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <h5 class="fw-bolder">Bike 4</h5>
-                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                    </div>
-                                    $40.00
+                                    <h6 class="fw-bolder">40 ETH</h6>
+                                    <h7>1987.02.11</h7>
                                 </div>
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center" id="bike4">
-                                    <button type="button" id="modal_btn">Buy</button>
+                                    <button type="button" id="modal_btn" class="bikeOpen4">BUY & MINT NFT</button>
                                     <!--<a class="btn btn-outline-dark mt-auto" href="#">Buy</a>-->
                                     <div class="modal_background"></div>
                                     <div class="modal_wrap">
-                                        <div class="modal_close">X</div>
+                                        <div class="modal_close" id="bikeClose4">X</div>
                                         <div class="text">
                                             <h2>Bike 1</h2>
                                             <img src="https://ipfs.io/ipfs/QmWn5ZAEM73FP6XRn9QrqCBMbkS7WVbUCxkyFfgJT2fVdd?filename=bike1.png" width="400" height="250">
@@ -214,13 +205,14 @@
                                             <button type="button" class="modalPay_close" id="pay_btn">Buy</button>
                                         </div>
                                     </div>
+                                    <br>
                                     <button type="button" id="refundBtn" disabled>Refund</button>
                                     <button type="button" id="purchase_confirm" disabled>Confirmed</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <!--<div class="col mb-5">
                         <div class="card h-100">
                             <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
                             <img class="card-img-top" src="https://ipfs.io/ipfs/QmWn5ZAEM73FP6XRn9QrqCBMbkS7WVbUCxkyFfgJT2fVdd?filename=bike1.png" width="400" height="180" />
@@ -233,8 +225,8 @@
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center" id="bike5">
-                                    <button type="button" id="modal_btn">Buy</button>
-                                    <!--<a class="btn btn-outline-dark mt-auto" href="#">Buy</a>-->
+                                    <button type="button" id="modal_btn">BUY & MINT NFT</button>
+                                    <!--<a class="btn btn-outline-dark mt-auto" href="#">Buy</a>
                                     <div class="modal_background"></div>
                                     <div class="modal_wrap">
                                         <div class="modal_close">X</div>
@@ -252,7 +244,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                     <!--<div class="col mb-5">
                         <div class="card h-100">
                             <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />

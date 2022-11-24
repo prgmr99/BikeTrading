@@ -158,8 +158,10 @@ p {
   margin-bottom: 1rem;
 }
 #modal_btn {
-  width: 53.6px;
-  height: 38px;
+  width: 150px;
+  height: 40px;
+  font-size: 96%;
+  font-weight: bold;
 }
 
 #pay_btn {
@@ -186,10 +188,10 @@ p {
   display: none;
   width: 800px;
   height: 500px;
-  position: absolute;
+  position: fixed;
   border: 2px solid black;
-  top:50%;
-  left: 170%;
+  top: 50%;
+  left: 40%;
   margin: -250px 0 0 -250px;
   background:#eee;
   z-index: 2;
