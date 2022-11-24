@@ -88,8 +88,8 @@ test8.addEventListener('click', () => {
 //document.querySelector('#pay_btn').addEventListener('click', modalPayClose);
 // 모달창의 결제버튼 클릭시
 // 환불 버튼과 구매확정 버튼
-const refundBtn = document.querySelector("#refundBtn");
-const confirm_pur = document.querySelector("#purchase_confirm");
+const refundBtn = document.querySelectorAll("#refundBtn");
+const confirm_pur = document.querySelectorAll("#purchase_confirm");
 
 const target = document.querySelector("#pay_btn");
 const target1 = document.querySelector("#modal_btn");
